@@ -15,7 +15,7 @@ public class HttpRequestSender {
 
 	private static void sendGet() throws IOException, InterruptedException {
 		HttpRequest request = HttpRequest.newBuilder().GET()
-				.uri(URI.create("https://error-message-sender.herokuapp.com/message"))
+				.uri(URI.create("https://your-url/"))
 				.setHeader("custom-header", "value").build();
 
 		HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -31,10 +31,10 @@ public class HttpRequestSender {
 		data.put("username", "abc");
 		data.put("password", "123");
 		data.put("custom", "secret");
-		data.put("ts", System.currentTimeMillis());
+		data.put("timestamp", System.currentTimeMillis());
 
 		HttpRequest request = HttpRequest.newBuilder().POST(buildFormDataFromMap(data))
-				.uri(URI.create("https://error-message-sender.herokuapp.com/message"))
+				.uri(URI.create("https://your-url/"))
 				.setHeader("custom-headr", "value").build();
 
 		HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
